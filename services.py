@@ -20,11 +20,7 @@ def insert_order(order: Order):
     send_message_to_queue(order)
 
 def send_message_to_queue(order: Order):
-    message_body = json.dumps({
-        "type": order.type,
-        "price": order.price,
-        "asset_symbol": order.asset_symbol
-    })
+    message_body = json.dumps(order.__dict__)
     with ServiceBusClient.from_connection_string(service_bus_connection_string) as client:
         with client.get_queue_sender(queue_name) as sender:
             message = ServiceBusMessage(message_body)

@@ -12,7 +12,7 @@ USERS_IDS = ["user-1234", "user-5678", "user-8910", "user-4321", "user-8765", "u
 class Order:
     id: str
     type: str
-    asset_symbol: str
+    assetSymbol: str
     quantity: int
     price: float
     status: str
@@ -28,7 +28,7 @@ class Order:
         return Order(
             id=str(uuid.uuid4()),
             type="sell",
-            asset_symbol= Random_asset_symbol,
+            assetSymbol= Random_asset_symbol,
             quantity=1,
             price=random.choice(PRICES),
             status="open",

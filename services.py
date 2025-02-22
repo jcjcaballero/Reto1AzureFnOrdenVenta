@@ -1,3 +1,4 @@
+import json
 from azure.cosmos import CosmosClient
 from azure.servicebus import ServiceBusClient, ServiceBusMessage
 import os
@@ -19,7 +20,12 @@ def insert_order(order: Order):
     send_message_to_queue(order)
 
 def send_message_to_queue(order: Order):
+    message_body = json.dumps({
+        "type": order.type,
+        "price": order.price,
+        "asset_symbol": order.asset_symbol
+    })
     with ServiceBusClient.from_connection_string(service_bus_connection_string) as client:
         with client.get_queue_sender(queue_name) as sender:
-            message = ServiceBusMessage(f"Order {order.id} registered: {order.type} {order.price} {order.asset_symbol}")
+            message = ServiceBusMessage(message_body)
             sender.send_messages(message)

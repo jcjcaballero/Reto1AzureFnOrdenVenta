@@ -6,7 +6,7 @@ import random
 ASSET_SYMBOLS = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "FB", "NVDA", "NFLX" ]
 PRICES = [random.randint(10, 100) for _ in range(10)]
 USERS_IDS = ["user-1234", "user-5678", "user-8910", "user-4321", "user-8765", "user-8910", "user-1027" ]
-Random_asset_symbol = random.choice(ASSET_SYMBOLS)
+
 
 @dataclass
 class Order:
@@ -24,6 +24,7 @@ class Order:
 
     @staticmethod
     def generate_random_order():
+        Random_asset_symbol = random.choice(ASSET_SYMBOLS)
         return Order(
             id=str(uuid.uuid4()),
             type="sell",

@@ -21,9 +21,10 @@ class Order:
     user_id: str
     matching: dict | None
     partitionKey:str
+    runnerId: int
 
     @staticmethod
-    def generate_random_order():
+    def generate_random_order(runnerId):
         Random_asset_symbol = random.choice(ASSET_SYMBOLS)
         return Order(
             id=str(uuid.uuid4()),
@@ -36,5 +37,6 @@ class Order:
             updated_at=datetime.now(timezone.utc).isoformat(),
             user_id=random.choice(USERS_IDS),
             matching=None,
-            partitionKey = Random_asset_symbol
+            partitionKey = Random_asset_symbol,
+            runnerId= runnerId
         )

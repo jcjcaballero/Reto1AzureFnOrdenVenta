@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 import random
 
 ASSET_SYMBOLS = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "FB", "NVDA", "NFLX" ]
-PRICES = [num for num in range(10, 201, 5)]
+PRICES = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 USERS_IDS = ["user-1234", "user-5678", "user-8910", "user-4321", "user-8765", "user-8910", "user-1027" ]
 
 
